@@ -2,6 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Dropdown = styled.div`
+    .dropdown-menu{
+        margin-top: 30px;
+        border: none;
+        background: #ffff;
+    }
 
 `
 
@@ -11,52 +16,34 @@ class DropdownMenu extends React.Component{
         super(props);
 
         this.state = {
-            showDropdown: false,
-            lang: ['FR', 'EN'],
+            value: 'fr'
         }
 
-        this.showDrop = this.showDrop.bind(this);
-        this.closeDropdownMenu = this.closeDropdownMenu.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
 
-    showDrop(e){
-        e.preventDefault();
-        this.setState({showDropdown : this.state.showDropdown === false ? true : false}, ()=> {
-            document.addEventListener('click', this.closeDropdownMenu)
-        })
-    }
+handleChange(e){
+    this.setState({value: e.target.value});
+}
 
-    closeDropdownMenu(){
-        // e.preventDefault();
-        this.setState({showDrop: this.state.showDropdown = false }, () =>{
-            document.removeEventListener('click', this.closeDropdownMenu)
-        })
-    }
-
-
+handleSubmit(e){
+    // console.log(this.state.value)
+    e.preventDefault();
+}
 
 
     render(){
 
         return(
             <Dropdown>
-                <button onClick={this.showDrop}>{this.state.showDropdown === false ? this.state.lang[0] : this.state.lang[2]}</button>
-
-                {
-                this.state.showDropdown === true ?
-
-                <div className="menu-dropdown">
-                    <ul>
-                        <li>FR</li>
-                        <li>EN</li>
-                    </ul>
-                </div>
-
-                : 
-                null
-
-                }
+                <form onSubmit={this.handleSubmit}>
+                    <select value={this.state.value} onChange={this.handleChange}  className="dropdown-menu">
+                        <option value="fr">🇫🇷 FR</option>
+                        <option value="en">🇬🇧 EN</option>
+                    </select>
+                </form>
             </Dropdown>
         )
     }
