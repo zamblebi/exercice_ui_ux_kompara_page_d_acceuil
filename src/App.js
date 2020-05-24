@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 //components
 import NavBar from './components/NavBar'
-import Header from './components/Header'
+import Intro from './components/Intro'
 
 const H1 = styled.h1`
 `
@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <NavBar/>
-        <Header/>
+        <Intro/>
       </header>
     </div>
   );
