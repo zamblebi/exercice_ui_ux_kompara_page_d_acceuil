@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import kompara_logo from '../img/kompara_logo.png'
+import DropdownMenu from './dropdown/DropdownMenu'
 
 const Nav = styled.nav`
     display: flex;
@@ -32,11 +33,6 @@ const Nav = styled.nav`
             width: 10rem;
         }
     }
-
-    .language{
-        margin: 0;
-        padding: 0;
-    }
 `
 
 
@@ -56,12 +52,7 @@ class NavBar extends React.Component{
                     <li><a href="#">Rejoins la communauté</a></li>
                     <li><a href="#">Connexion</a></li>
                 </ul>
-                <a>
-                    <ul className="language">
-                        <li>FR</li>
-                        <li>EN</li>
-                    </ul>
-                </a>
+                <DropdownMenu/>
             </Nav>
         )
     }
